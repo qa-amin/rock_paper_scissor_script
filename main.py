@@ -31,11 +31,13 @@ def find_winer(user_choice, system_choice):
 
 
 def play():
-    
+
+    user_point = 0
+    system_point = 0
+
     while True:
 
-        user_point = 0
-        system_point = 0
+        
         user_choice = get_user_choice()
         print('user choice is :', user_choice,  '\n' )
 
@@ -53,15 +55,23 @@ def play():
             print('you lose!\n')
         else:
             print("draw!\n")
-
-        con = input('would you like to continue? enter y:\n')
-        if con != 'y':
+        
+        if (user_point >= 3) or (system_point >= 3):
+            
             if user_point > system_point:
                 print('YOU WON THE GAME !!!!!!!!!!!!!!!!!!!\n')
             elif user_point < system_point:
                 print('YOU LOSE THE GAME !!!!!!!!!!!!!!!!!!\n')
             else:
                 print('DRAW!!!!!!!!!!!!!!!!!!!\n')
-            break
+
+            con = input('would you like to continue? enter y:\n')
+
+            if con !='y':
+                break
+            
+            user_point = 0
+            system_point = 0
+    
 
 play()
